@@ -1,0 +1,90 @@
+/* General elements */
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  border: 0;
+  outline: 0;
+}
+body {
+  overflow-y: scroll;
+  color: #637791;
+  font-size: 140%;
+  font-family: 'Lato Light', 'Lato';
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+table {
+  border-collapse: collapse;
+}
+table,
+tr,
+td {
+  margin: 0;
+  padding: 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0 7px;
+  cursor: default;
+  font-weight: normal;
+}
+h1 {
+  font-size: 1.33em;
+}
+h2 {
+  font-size: 1.17em;
+}
+h3 {
+  font-size: .98em;
+}
+label {
+  font-size: 70%;
+  font-style: italic;
+  opacity: .7;
+}
+input,
+select {
+  padding: 1px 2px 0 3px;
+  width: 100%;
+  color: inherit;
+  font-family: inherit;
+  background: rgba(255, 255, 255, 0.91);
+  border: 1px solid #bbcccc;
+}
+input[type=number] {
+  font-weight: bold;
+}
+/* Positioning */
+/* Utilities */
+/* Fonts */
+@font-face {
+  font-family: 'Lato Light';
+  src: url('Fonts/Lato-Light.ttf') format('truetype');
+  font-weight: 100;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Lato';
+  src: url('Fonts/Lato-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Lato Bold';
+  src: url('Fonts/Lato-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}

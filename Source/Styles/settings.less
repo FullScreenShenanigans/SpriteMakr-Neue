@@ -1,0 +1,30 @@
+@import (reference) "colors.less";
+@import (reference) "general.less";
+
+.palette {
+    .color-interactive();
+}
+
+.settings-input-containers {
+    text-align: center;
+}
+
+.settings-input-container {
+    display: inline-block;
+    margin-right: 14px;
+    padding: 0 14px 7px;
+    font-size: 140%;
+
+    label {
+        position: relative;
+        top: -7px;
+    }
+
+    .number-input {
+        margin-left: 7px;
+    }
+
+    input[type=number] {
+        font-size: .56em;
+    }
+}

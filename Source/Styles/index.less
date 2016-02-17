@@ -1,0 +1,128 @@
+@import (reference) "colors.less";
+@import (reference) "general.less";
+
+@screen-width-small: 490px;
+@screen-width-medium: 840px;
+@screen-width-large: 1050px;
+@screen-width-huge: 1589px;
+@screen-width-infinite: 2100px;
+
+#app {
+    clear: both;
+}
+
+section {
+    margin: @padding-general-in;
+    -moz-transition: @transition-speed padding;
+    -o-transition: @transition-speed padding;
+    -webkit-transition: @transition-speed padding;
+    transition: @transition-speed padding;
+}
+
+.results-container, .uploads-container {
+    display: flex;
+    -ms-flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+#interactions {
+    overflow: hidden;
+}
+
+#editor {
+    .result-info-name {
+        right: 0;
+    
+        .text-input {
+            width: 100%;
+        }
+    }
+}
+
+
+/* Small */
+
+@media (min-width: @screen-width-small) and (max-width: @screen-width-large) {
+    section {
+        padding: @padding-general-in;
+    }
+
+    #uploads {
+        .file-drop {
+            height: 140px;
+        }
+
+        .input-file-drop {
+            -ms-flex: 1;
+            -webkit-flex: 1;
+            flex: 1;
+
+            &:not(:last-of-type) {
+                margin-right: @padding-general-out;
+                margin-bottom: 0;
+            }
+        }
+    }
+}
+
+/* Medium */
+
+@media (min-width: @screen-width-medium) {
+    .header {
+        margin-top: 0;
+    }
+    
+    #results {
+        .result {
+            display: inline-block;
+            width: calc(~"50%" - @padding-general-in);
+            min-width: initial;
+        }
+    }
+}
+
+@media (min-width: @screen-width-medium) and (max-width: @screen-width-huge) {
+    #results .result:nth-of-type(2n + 1) {
+        margin-right: @padding-general-out;
+    }
+}
+
+
+/* Large */
+
+@media (min-width: @screen-width-large) {
+    #uploads {
+        float: left;
+        width: 280px;
+        
+        .file-drop {
+            height: 140px;
+        }
+    }
+}
+
+
+/* Huge */
+
+@media (min-width: @screen-width-huge) {
+    #results .result {
+        width: calc(~"33%" - @padding-general-in);
+    }
+}
+
+@media (min-width: @screen-width-huge) and (max-width: @screen-width-infinite) {
+    #results .result&:not(:nth-of-type(3n)) {
+        margin-right: @padding-general-out;
+    }
+}
+
+
+/* Infinite */
+
+@media (min-width: @screen-width-infinite) {
+    #results .result {
+        margin-right: @padding-general-out;
+        width: 490px;
+    }
+}

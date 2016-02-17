@@ -1,0 +1,114 @@
+#settings .header {
+  margin-bottom: 0;
+}
+.palette {
+  position: relative;
+  overflow: hidden;
+}
+.palette input[type=text] {
+  font-size: 1em;
+}
+.palette-background {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.palette-controls {
+  float: left;
+  margin: -1px 0 7px -1px;
+  width: 252px;
+}
+.palette-names .select-input {
+  width: 100%;
+}
+.palette-name {
+  margin-top: 14px;
+}
+.palette-buttons {
+  display: flex;
+  -ms-flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+.palette-buttons .input-button {
+  -ms-flex: 1;
+  -webkit-flex: 1;
+  flex: 1;
+}
+.palette-buttons .input-button .button {
+  width: 100%;
+  text-align: center;
+}
+.palette-buttons .input-button:not(:first-of-type) .button {
+  border-left: none;
+}
+.palette-colors {
+  padding: 7px;
+  overflow: hidden;
+  line-height: 0;
+}
+.palette-no-color-placeholder {
+  margin: 1.17em 1.75em;
+  font-style: italic;
+  text-align: center;
+}
+.palette-color-options h4 {
+  margin: 35px 0 14px 0;
+  text-align: right;
+  font-style: italic;
+}
+.palette-color-options hr {
+  margin: 14px 0;
+  clear: both;
+}
+.palette-color-options .palette-color-no-name {
+  opacity: .49;
+}
+.palette-color-options .palette-color-values-table {
+  margin: 0 0 0 7px;
+  float: right;
+}
+.palette-color-options .palette-color-values-table tr td:not(:first-of-type) input {
+  border-left-width: 0;
+}
+.palette-color-options .input-button {
+  float: right;
+  padding-left: 7px;
+}
+.palette-color-options .palette-color-labels {
+  line-height: 70%;
+}
+.color {
+  display: inline-block;
+  margin: 0 7px 7px 0;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  color: #637791;
+  transition: 350ms all;
+  border: 1px solid transparent;
+}
+.color svg {
+  stroke: #637791;
+  stroke-width: 1px;
+}
+.color:hover {
+  text-shadow: rgba(238, 245, 255, 0.28) 0 0 3px;
+}
+.color:not(.no-border) {
+  border: 1px solid #aab0ba;
+}
+.color:not(.no-border):hover {
+  background-color: rgba(238, 245, 255, 0.28);
+  box-shadow: 0 0 3px rgba(238, 245, 255, 0.28) inset, 0 0 3px rgba(238, 245, 255, 0.28);
+  border: 1px solid #637791;
+}
+.color.color-selected {
+  border: 3px solid #aab0ba;
+}
+.color-inside {
+  width: 100%;
+  height: 100%;
+}

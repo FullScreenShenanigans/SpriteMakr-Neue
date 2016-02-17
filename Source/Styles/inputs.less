@@ -1,0 +1,224 @@
+@import (reference) "colors.less";
+@import (reference) "general.less";
+
+/* General inputs */
+
+.input {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    
+    .input {
+        width: 100%;
+        height: 100%;
+        overflow: visible;
+    }
+}
+
+
+/* Icons */
+
+.input svg {
+    width: 100%;
+    height: 100%;
+}
+
+
+/* Buttons */
+
+.button {
+    display: inline-block;
+    padding: .21em .49em;
+    cursor: pointer;
+    .centered-outside();
+    .color-interactive();
+}
+
+.button-icon {
+    line-height: 0;
+    text-align: center;
+    .centered-inside();
+    .color-interactive-fill();
+    
+    &:hover {
+        background-color: transparent;
+    }
+}
+
+.button-icon-inside {
+    display: inline-block;
+    width: 1.17em;
+    height: 1.17em;
+    border-radius: 100%;
+    -moz-transition: @transition-speed width, @transition-speed height;
+    -o-transition: @transition-speed width, @transition-speed height;
+    -webkit-transition: @transition-speed width, @transition-speed height;
+    transition: @transition-speed width, @transition-speed height;
+}
+
+.button-icon+.button-text {
+    margin-left: .35em;
+}
+
+.button-text {
+    font-size: 77%;
+    text-transform: uppercase;
+}
+
+.button-text-inside {
+    display: inline-block;
+    padding-bottom: .28em;
+}
+
+
+/* Expandable buttons */
+
+.expandable-button {
+    position: relative;
+    width: 140px;
+    height: 140px;
+    padding: .21em;
+    cursor: auto;
+
+    .button {
+        padding: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .button-icon {
+        border-radius: 100%;
+        border-width: 2px;
+        cursor: pointer;
+        .color-interactive();
+    }
+}
+
+.expandable-button-inside {
+    position: absolute;
+    top: 21%;
+    right: 21%;
+    bottom: 21%;
+    left: 21%;
+    -moz-transition: @transition-speed top, @transition-speed right, @transition-speed bottom, @transition-speed left;
+    -o-transition: @transition-speed top, @transition-speed right, @transition-speed bottom, @transition-speed left;
+    -webkit-transition: @transition-speed top, @transition-speed right, @transition-speed bottom, @transition-speed left;
+    transition: @transition-speed top, @transition-speed right, @transition-speed bottom, @transition-speed left;
+
+    .expandable-button:hover & {
+        top: 14%;
+        right: 14%;
+        bottom: 14%;
+        left: 14%;
+
+        &:hover {
+            top: 7%;
+            right: 7%;
+            bottom: 7%;
+            left: 7%;
+        }
+    }
+}
+
+
+/* Select inputs */
+
+.select-input input {
+    font-size: 1em;
+}
+
+.select-input-options {
+    max-height: 4.9em;
+    overflow-x: hidden;
+    // overflow-y: scroll;
+}
+
+.select-input-option {
+    position: relative;
+    display: block;
+    margin-top: -1px;
+    overflow: hidden;
+    cursor: pointer;
+    opacity: .7;
+    .color-interactive();
+
+    // &.option-not-selected {
+    //     padding: 3px;
+    // }
+
+    &.option-selected {
+        opacity: 1;
+        padding: 3px;
+    }
+}
+
+.select-input-buttons {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: -2px;
+    width: auto;
+
+    span {
+        float: right;
+
+        &:not(:first-of-type) .input {
+            margin-right: -14px;
+        }
+    }
+}
+
+
+/* File drops */
+
+.input-file-drop {
+    -ms-flex: 0 0 100%;
+    -webkit-flex: 0 0 100%;
+    flex: 0 0 100%;
+    display: block;
+    margin-right: 0;
+
+    &:not(:last-of-type) {
+        margin-bottom: @padding-general-out;
+    }
+
+    input {
+        display: none;
+    }
+}
+
+.file-drop {
+    position: relative;
+    padding: @padding-general-in;
+    width: 100%;
+    height: 70px;
+    cursor: pointer;
+    .color-interactive();
+    .color-interactive-fill();
+    
+    &:hover {
+        height: 140px;
+    }
+    
+    .file-drop-button {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+
+        .button {
+            margin: auto;
+            bottom: -11.7%;
+            cursor: pointer;
+        }
+
+        .button-icon {
+            .color-interactive-fill();
+        }
+    }
+    
+    .file-drop-text {
+        display: block;
+    }
+}

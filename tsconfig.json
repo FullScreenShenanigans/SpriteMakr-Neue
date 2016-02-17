@@ -1,0 +1,11 @@
+{
+    "src": [
+        "Source/*.ts",
+        "Source/*.tsx",
+        "Source/Components/**/*.ts",
+        "Source/Components/**/*.tsx"
+    ],
+    "compilerOptions": {
+        "jsx": "react"
+    }
+}

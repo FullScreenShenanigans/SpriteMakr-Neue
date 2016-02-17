@@ -1,0 +1,72 @@
+@color-very-light: rgba(238, 245, 255, .28);
+@color-light: #bbcccc;
+@color-medium: #aab0ba;
+@color-dark: #637791;
+
+@color-red-very-light: rgba(255, 238, 238, .35);
+@color-red-medium: #aa7777;
+@color-red-dark: #774949;
+
+@color-green-very-light: rgba(238, 255, 238, .35);
+@color-green-medium: #77aa77;
+@color-green-dark: #497749;
+
+@color-white-very-light: rgba(255, 255, 255, .35);
+@color-white-light: rgba(255, 255, 255, .49);
+@color-white-medium: rgba(255, 255, 255, .7);
+@color-white-dark: rgba(255, 255, 255, .84);
+
+.border(@color) {
+    border: 1px solid @color;
+}
+
+
+/* Interactive styles */
+
+.color-interactive() {
+    color: @color-dark;
+    transition: @transition-speed all;
+    .border(transparent);
+    
+    svg {
+        stroke: @color-dark;
+        stroke-width: 1px;
+    }
+    
+    &:hover {
+        text-shadow: @color-very-light 0 0 3px;
+    }
+    
+    &:not(.no-border) {
+        .border(@color-medium);
+        
+        &:hover {
+            background-color: @color-very-light;
+            box-shadow: 
+                0 0 3px @color-very-light inset,
+                0 0 3px @color-very-light;
+            .border(@color-dark);
+        }
+    }
+}
+
+.color-interactive-fill() {
+    &:hover {
+        background: @color-very-light;
+    }
+}
+
+.color-interactive-highlight(@color-new-very-light, @color-new-medium, @color-new-dark) {
+    background-color: @color-new-very-light;
+    border-color: @color-new-medium;
+    color: @color-new-dark;
+    
+    .input-button {
+        border-color: @color-new-medium;
+        color: @color-new-medium;
+    }
+    
+    svg {
+        stroke: @color-new-medium;
+    }
+}
