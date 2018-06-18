@@ -1,10 +1,23 @@
 /// <reference path="../../References/react.d.ts" />
 /// <reference path="../../References/react-dom.d.ts" />
 /// <reference path="../../References/react-global.d.ts" />
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __assign = (this && this.__assign) || Object.assign || function(t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+        s = arguments[i];
+        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+            t[p] = s[p];
+    }
+    return t;
 };
 /// <reference path="ResultsSection.d.ts" />
 /// <reference path="Header.tsx" />
@@ -19,10 +32,10 @@ var SpriteMakr;
             /**
              * A ResultsSection component.
              */
-            var ResultsSection = (function (_super) {
+            var ResultsSection = /** @class */ (function (_super) {
                 __extends(ResultsSection, _super);
                 function ResultsSection() {
-                    _super.apply(this, arguments);
+                    return _super !== null && _super.apply(this, arguments) || this;
                 }
                 /**
                  * Gets the unique id of the section.
@@ -39,21 +52,22 @@ var SpriteMakr;
                  */
                 ResultsSection.prototype.renderHeader = function () {
                     var _this = this;
-                    return (React.createElement(Components.Header, {"text": "Results", "buttons": [
-                        {
-                            icon: "x",
-                            text: "Reset",
-                            onActivate: function () { return _this.props.onResetContents(); },
-                            onHoverEnd: function () { return _this.setHoverColor(); },
-                            onHoverStart: function () { return _this.setHoverColor("red"); }
-                        },
-                        {
-                            icon: "down",
-                            text: "Download All",
-                            onActivate: this.downloadResults.bind(this),
-                            onHoverEnd: function () { return _this.setHoverColor(); },
-                            onHoverStart: function () { return _this.setHoverColor("green"); }
-                        }]}));
+                    return (React.createElement(Components.Header, { text: "Results", buttons: [
+                            {
+                                icon: "x",
+                                text: "Reset",
+                                onActivate: function () { return _this.props.onResetContents(); },
+                                onHoverEnd: function () { return _this.setHoverColor(); },
+                                onHoverStart: function () { return _this.setHoverColor("red"); }
+                            },
+                            {
+                                icon: "down",
+                                text: "Download All",
+                                onActivate: this.downloadResults.bind(this),
+                                onHoverEnd: function () { return _this.setHoverColor(); },
+                                onHoverStart: function () { return _this.setHoverColor("green"); }
+                            }
+                        ] }));
                 };
                 /**
                  * Renders the section's contents.
@@ -61,7 +75,7 @@ var SpriteMakr;
                  * @returns The rendered content components.
                  */
                 ResultsSection.prototype.renderContents = function () {
-                    return (React.createElement("div", {"className": "results-container"}, this.props.results.map(this.renderResult.bind(this))));
+                    return (React.createElement("div", { className: "results-container" }, this.props.results.map(this.renderResult.bind(this))));
                 };
                 /**
                  * Renders a single result.
@@ -70,7 +84,7 @@ var SpriteMakr;
                  * @param i   The result's index within results, as its key.
                  */
                 ResultsSection.prototype.renderResult = function (result, i) {
-                    return (React.createElement(Components.Results.FinalResult, React.__spread({"key": result.id}, result)));
+                    return (React.createElement(Components.Results.FinalResult, __assign({ key: result.id }, result)));
                 };
                 /**
                  * Triggers a download of the summarized results.
@@ -93,9 +107,8 @@ var SpriteMakr;
                     });
                 };
                 return ResultsSection;
-            })(Sections.Section);
+            }(Sections.Section));
             Sections.ResultsSection = ResultsSection;
         })(Sections = Components.Sections || (Components.Sections = {}));
     })(Components = SpriteMakr.Components || (SpriteMakr.Components = {}));
 })(SpriteMakr || (SpriteMakr = {}));
-//# sourceMappingURL=ResultsSection.js.map

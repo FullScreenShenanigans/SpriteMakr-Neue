@@ -1,11 +1,16 @@
 /// <reference path="../../References/react.d.ts" />
 /// <reference path="../../References/react-dom.d.ts" />
 /// <reference path="../../References/react-global.d.ts" />
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 /// <reference path="FileDrop.d.ts" />
 /// <reference path="ExpandableButton.tsx" />
 var SpriteMakr;
@@ -18,10 +23,10 @@ var SpriteMakr;
             /**
              * A droppable area for files to be uploaded into.
              */
-            var FileDrop = (function (_super) {
+            var FileDrop = /** @class */ (function (_super) {
                 __extends(FileDrop, _super);
                 function FileDrop() {
-                    _super.apply(this, arguments);
+                    return _super !== null && _super.apply(this, arguments) || this;
                 }
                 /**
                  * Renders the component.
@@ -37,7 +42,11 @@ var SpriteMakr;
                     if (this.state.fileHovering) {
                         className += " file-hovering";
                     }
-                    return (React.createElement("div", {"onClick": this.handleFileClick.bind(this), "onDragEnter": this.handleFileDragEnter.bind(this), "onDragLeave": this.handleFileDragLeave.bind(this), "onDragOver": this.handleFileDragOver.bind(this), "onDrop": this.handleFileDrop.bind(this), "className": className, "style": style}, React.createElement("span", {"className": "file-drop-text"}, this.props.text), React.createElement("span", {"className": "file-drop-button"}, React.createElement(Inputs.ExpandableButton, {"icon": (this.state.hovering || this.state.fileHovering) ? "up" : "plus"})), React.createElement("input", {"accept": "image/*", "multiple": true, "onChange": this.handleFileDrop.bind(this), "ref": FileDrop.refFileInput, "type": "file"})));
+                    return (React.createElement("div", { onClick: this.handleFileClick.bind(this), onDragEnter: this.handleFileDragEnter.bind(this), onDragLeave: this.handleFileDragLeave.bind(this), onDragOver: this.handleFileDragOver.bind(this), onDrop: this.handleFileDrop.bind(this), className: className, style: style },
+                        React.createElement("span", { className: "file-drop-text" }, this.props.text),
+                        React.createElement("span", { className: "file-drop-button" },
+                            React.createElement(Inputs.ExpandableButton, { icon: (this.state.hovering || this.state.fileHovering) ? "up" : "plus" })),
+                        React.createElement("input", { accept: "image/*", multiple: true, onChange: this.handleFileDrop.bind(this), ref: FileDrop.refFileInput, type: "file" })));
                 };
                 /**
                  * Gets a className for the input's container.
@@ -123,7 +132,7 @@ var SpriteMakr;
                  */
                 FileDrop.refFileInput = "fileInput";
                 return FileDrop;
-            })(Inputs.Input);
+            }(Inputs.Input));
             Inputs.FileDrop = FileDrop;
         })(Inputs = Components.Inputs || (Components.Inputs = {}));
     })(Components = SpriteMakr.Components || (SpriteMakr.Components = {}));

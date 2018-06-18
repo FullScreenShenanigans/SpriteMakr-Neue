@@ -1,10 +1,15 @@
 /// <reference path="Input.d.ts" />
 /// <reference path="Icons/IconClasses.ts" />
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 var SpriteMakr;
 (function (SpriteMakr) {
     var Components;
@@ -15,7 +20,7 @@ var SpriteMakr;
             /**
              * An abstract class for input components.
              */
-            var Input = (function (_super) {
+            var Input = /** @class */ (function (_super) {
                 __extends(Input, _super);
                 /**
                  * Initializes a new instance of the Input class.
@@ -24,10 +29,11 @@ var SpriteMakr;
                  * @param context   The component's creation context.
                  */
                 function Input(props, context) {
-                    _super.call(this, props, context);
-                    this.state = {
+                    var _this = _super.call(this, props, context) || this;
+                    _this.state = {
                         hovering: false
                     };
+                    return _this;
                 }
                 /**
                  * Renders the component.
@@ -36,7 +42,7 @@ var SpriteMakr;
                  */
                 Input.prototype.render = function () {
                     var _this = this;
-                    return (React.createElement("div", {"className": "input input-" + this.getInputClassName(), "onMouseOver": function (event) { return _this.setHovering(event, true); }, "onMouseLeave": function (event) { return _this.setHovering(event, false); }}, this.renderInput()));
+                    return (React.createElement("div", { className: "input input-" + this.getInputClassName(), onMouseOver: function (event) { return _this.setHovering(event, true); }, onMouseLeave: function (event) { return _this.setHovering(event, false); } }, this.renderInput()));
                 };
                 /**
                  * Renders an icon keyed by its String alias.
@@ -84,7 +90,7 @@ var SpriteMakr;
                     }
                 };
                 return Input;
-            })(React.Component);
+            }(React.Component));
             Inputs.Input = Input;
         })(Inputs = Components.Inputs || (Components.Inputs = {}));
     })(Components = SpriteMakr.Components || (SpriteMakr.Components = {}));

@@ -30,7 +30,7 @@ var SpriteMakr;
                     "undo": Icons.UndoIcon,
                     "up": Icons.UpIcon,
                     "redo": Icons.RedoIcon,
-                    "x": Icons.XIcon,
+                    "x": Icons.XIcon
                 };
             })(Icons = Inputs.Icons || (Inputs.Icons = {}));
         })(Inputs = Components.Inputs || (Components.Inputs = {}));

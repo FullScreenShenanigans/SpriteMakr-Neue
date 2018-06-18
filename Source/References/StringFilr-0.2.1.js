@@ -7,7 +7,7 @@ var StringFilr;
      * such that you can pass in a listing (in any order) of the path to data for
      * retrieval.
      */
-    var StringFilr = (function () {
+    var StringFilr = /** @class */ (function () {
         /**
          * @param {IStringFilrSettings} settings
          */
@@ -165,7 +165,6 @@ var StringFilr;
             }
         };
         return StringFilr;
-    })();
+    }());
     StringFilr_1.StringFilr = StringFilr;
 })(StringFilr || (StringFilr = {}));
-//# sourceMappingURL=StringFilr-0.2.1.js.map

@@ -1,9 +1,14 @@
 /// <reference path="Result.d.ts" />
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 /// <reference path="../Inputs/Button.tsx" />
 /// <reference path="../Inputs/NumberInput.tsx" />
 /// <reference path="../Inputs/TextInput.tsx" />
@@ -18,7 +23,7 @@ var SpriteMakr;
             /**
              * Base class for Result components.
              */
-            var Result = (function (_super) {
+            var Result = /** @class */ (function (_super) {
                 __extends(Result, _super);
                 /**
                  * Initializes a new instance of the Result class.
@@ -27,11 +32,12 @@ var SpriteMakr;
                  * @param context   The component's creation context.
                  */
                 function Result(props, context) {
-                    _super.call(this, props, context);
-                    this.state = {
-                        palette: this.props.selectedPalette,
+                    var _this = _super.call(this, props, context) || this;
+                    _this.state = {
+                        palette: _this.props.selectedPalette,
                         spriteInfo: props.initialSpriteInfo || {}
                     };
+                    return _this;
                 }
                 /**
                  * Clears any known spriteInfo from state.
@@ -55,7 +61,17 @@ var SpriteMakr;
                  */
                 Result.prototype.render = function () {
                     var className = this.getClassName(), height = this.state.spriteInfo.height || this.props.defaultHeight, width = this.state.spriteInfo.width || this.props.defaultWidth;
-                    return (React.createElement("div", {"className": className}, React.createElement("div", {"className": "result-preview"}, React.createElement("div", {"className": "result-preview-holder"}, React.createElement(Results.Preview, {"height": height, "imageConverted": this.state.spriteInfo.imageConverted, "palette": this.state.palette, "scalingFactor": this.props.scalingFactor, "width": width})), React.createElement("div", {"className": "result-info"}, React.createElement("div", {"className": "result-info-name"}, this.renderName()), React.createElement("div", {"className": "result-info-inputs"}, this.renderSizing(width, height), this.renderActions(), React.createElement("div", {"className": "result-info-sprites"}, this.renderSpriteData()))), this.renderTopRightButton())));
+                    return (React.createElement("div", { className: className },
+                        React.createElement("div", { className: "result-preview" },
+                            React.createElement("div", { className: "result-preview-holder" },
+                                React.createElement(Results.Preview, { height: height, imageConverted: this.state.spriteInfo.imageConverted, palette: this.state.palette, scalingFactor: this.props.scalingFactor, width: width })),
+                            React.createElement("div", { className: "result-info" },
+                                React.createElement("div", { className: "result-info-name" }, this.renderName()),
+                                React.createElement("div", { className: "result-info-inputs" },
+                                    this.renderSizing(width, height),
+                                    this.renderActions(),
+                                    React.createElement("div", { className: "result-info-sprites" }, this.renderSpriteData()))),
+                            this.renderTopRightButton())));
                 };
                 /*
                  * Sets a new value for hovering status.
@@ -155,9 +171,8 @@ var SpriteMakr;
                     return output;
                 };
                 return Result;
-            })(React.Component);
+            }(React.Component));
             Results.Result = Result;
         })(Results = Components.Results || (Components.Results = {}));
     })(Components = SpriteMakr.Components || (SpriteMakr.Components = {}));
 })(SpriteMakr || (SpriteMakr = {}));
-//# sourceMappingURL=Result.js.map

@@ -6,7 +6,7 @@ var ChangeLinr;
      * done by keeping an Array of transform Functions to process input on.
      * Outcomes for inputs are cached so repeat runs are O(1).
      */
-    var ChangeLinr = (function () {
+    var ChangeLinr = /** @class */ (function () {
         /**
          * @param {IChangeLinrSettings} settings
          */
@@ -139,7 +139,6 @@ var ChangeLinr;
             return output;
         };
         return ChangeLinr;
-    })();
+    }());
     ChangeLinr_1.ChangeLinr = ChangeLinr;
 })(ChangeLinr || (ChangeLinr = {}));
-//# sourceMappingURL=ChangeLinr-0.2.0.js.map

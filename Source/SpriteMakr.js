@@ -1,9 +1,14 @@
 /// <reference path="SpriteMakr.d.ts" />
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 /// <reference path="Components/Inputs/Button.tsx" />
 /// <reference path="Components/Inputs/ExpandableButton.tsx" />
 /// <reference path="Components/Inputs/FileDrop.tsx" />
@@ -17,7 +22,7 @@ var __extends = (this && this.__extends) || function (d, b) {
 var SpriteMakr;
 (function (SpriteMakr_1) {
     "use strict";
-    var SpriteMakr = (function (_super) {
+    var SpriteMakr = /** @class */ (function (_super) {
         __extends(SpriteMakr, _super);
         /**
          * Initializes a new instance of the SpriteMakr class.
@@ -26,11 +31,11 @@ var SpriteMakr;
          * @param context   The component's creation context.
          */
         function SpriteMakr(props, context) {
-            _super.call(this, props, context);
+            var _this = _super.call(this, props, context) || this;
             /**
              * Initially known palette choices.
              */
-            this.palettes = {
+            _this.palettes = {
                 "Black & White": {
                     name: "Black & White",
                     colors: [
@@ -82,15 +87,48 @@ var SpriteMakr;
                         // Pinkish tan (22) for large decorative text
                         [252, 188, 176, 255]
                     ]
+                },
+                "Telia": {
+                    name: "Telia",
+                    colors: [
+                        [0, 0, 0, 0],
+                        [0, 0, 0, 255],
+                        [8, 164, 223, 255],
+                        [45, 170, 255, 255],
+                        [63, 192, 240, 255],
+                        [63, 140, 203, 255],
+                        [71, 175, 84, 255],
+                        [96, 178, 46, 255],
+                        [106, 71, 150, 255],
+                        [112, 87, 84, 255],
+                        [115, 66, 147, 255],
+                        [153, 118, 179, 255],
+                        [176, 126, 74, 255],
+                        [180, 78, 152, 255],
+                        [192, 209, 1, 255],
+                        [192, 145, 145, 255],
+                        [205, 182, 216, 255],
+                        [217, 176, 173, 255],
+                        [219, 136, 151, 255],
+                        [224, 174, 15, 255],
+                        [224, 174, 15, 255],
+                        [224, 174, 15, 255],
+                        [226, 220, 228, 255],
+                        [231, 22, 100, 255],
+                        [249, 178, 51, 255],
+                        [253, 200, 0, 255],
+                        [255, 255, 255, 255]
+                    ]
                 }
             };
-            this.state = {
+            _this.state = {
                 defaultHeight: 8,
                 defaultWidth: 8,
-                palettes: this.palettes,
+                palettes: _this.palettes,
                 results: [],
                 scalingFactor: 2
             };
+            return _this;
         }
         /**
          * Renders the component.
@@ -99,7 +137,12 @@ var SpriteMakr;
          */
         SpriteMakr.prototype.render = function () {
             var _this = this;
-            return (React.createElement("div", {"className": "SpriteMakr"}, React.createElement(SpriteMakr_1.Components.Sections.UploadsSection, {"onResults": this.receiveImageResults.bind(this), "palette": this.state.palettes[SpriteMakr.defaultPalette], "scalingFactor": this.state.scalingFactor}), React.createElement("div", {"id": "interactions"}, React.createElement(SpriteMakr_1.Components.Sections.EditorSection, {"defaultHeight": this.state.defaultHeight, "defaultWidth": this.state.defaultWidth, "onAdd": this.onEditorAdd.bind(this), "palettes": this.state.palettes, "scalingFactor": this.state.scalingFactor}), React.createElement(SpriteMakr_1.Components.Sections.ResultsSection, {"onResetContents": function () { return _this.setState({ results: [] }); }, "results": this.state.results}), React.createElement(SpriteMakr_1.Components.Sections.SettingsSection, {"onReportChanges": this.onReportChanges.bind(this), "palettes": this.state.palettes, "selectedPalette": this.state.palettes[SpriteMakr.defaultPalette]}))));
+            return (React.createElement("div", { className: "SpriteMakr" },
+                React.createElement(SpriteMakr_1.Components.Sections.UploadsSection, { onResults: this.receiveImageResults.bind(this), palette: this.state.palettes[SpriteMakr.defaultPalette], scalingFactor: this.state.scalingFactor }),
+                React.createElement("div", { id: "interactions" },
+                    React.createElement(SpriteMakr_1.Components.Sections.EditorSection, { defaultHeight: this.state.defaultHeight, defaultWidth: this.state.defaultWidth, onAdd: this.onEditorAdd.bind(this), palettes: this.state.palettes, scalingFactor: this.state.scalingFactor }),
+                    React.createElement(SpriteMakr_1.Components.Sections.ResultsSection, { onResetContents: function () { return _this.setState({ results: [] }); }, results: this.state.results }),
+                    React.createElement(SpriteMakr_1.Components.Sections.SettingsSection, { onReportChanges: this.onReportChanges.bind(this), palettes: this.state.palettes, selectedPalette: this.state.palettes[SpriteMakr.defaultPalette] }))));
         };
         /**
          * Handler for the editor reporting a newly created result.
@@ -154,9 +197,8 @@ var SpriteMakr;
         /**
          * The initial palette to have selected.
          */
-        SpriteMakr.defaultPalette = "Mario";
+        SpriteMakr.defaultPalette = "Telia";
         return SpriteMakr;
-    })(React.Component);
+    }(React.Component));
     SpriteMakr_1.SpriteMakr = SpriteMakr;
 })(SpriteMakr || (SpriteMakr = {}));
-//# sourceMappingURL=SpriteMakr.js.map

@@ -1,9 +1,14 @@
 /// <reference path="PalettesEditor.d.ts" />
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 /// <reference path="../Inputs/Button.tsx" />
 /// <reference path="../Inputs/NumberInput.tsx" />
 /// <reference path="../Inputs/SearchableSelectInput.tsx" />
@@ -18,7 +23,7 @@ var SpriteMakr;
             /**
              * A PalettesEditor component.
              */
-            var PalettesEditor = (function (_super) {
+            var PalettesEditor = /** @class */ (function (_super) {
                 __extends(PalettesEditor, _super);
                 /**
                  * Initializes a new instance of the PalettesEditor class.
@@ -27,11 +32,12 @@ var SpriteMakr;
                  * @param context
                  */
                 function PalettesEditor(props, context) {
-                    _super.call(this, props, context);
-                    this.state = {
-                        palettes: this.props.palettes,
-                        selectedPalette: this.props.selectedPalette
+                    var _this = _super.call(this, props, context) || this;
+                    _this.state = {
+                        palettes: _this.props.palettes,
+                        selectedPalette: _this.props.selectedPalette
                     };
+                    return _this;
                 }
                 /**
                  * Renders the component.
@@ -41,8 +47,13 @@ var SpriteMakr;
                 PalettesEditor.prototype.render = function () {
                     var _this = this;
                     var paletteNames = Object.keys(this.state.palettes);
-                    return (React.createElement("div", {"className": "palette"}, React.createElement("div", {"className": "palette-controls"}, React.createElement("div", {"className": "palette-names"}, React.createElement(Components.Inputs.SearchableSelectInput, {"defaultValue": this.state.selectedPalette.name, "onChange": this.handlePaletteSwitch.bind(this), "options": paletteNames})), this.renderColorControls(this.state.selectedPalette.colors[this.state.selectedColor])), React.createElement("div", {"className": "palette-colors"}, this.state.selectedPalette.colors
-                        .map(function (color, i) { return _this.renderColor(color, i); }))));
+                    return (React.createElement("div", { className: "palette" },
+                        React.createElement("div", { className: "palette-controls" },
+                            React.createElement("div", { className: "palette-names" },
+                                React.createElement(Components.Inputs.SearchableSelectInput, { defaultValue: this.state.selectedPalette.name, onChange: this.handlePaletteSwitch.bind(this), options: paletteNames })),
+                            this.renderColorControls(this.state.selectedPalette.colors[this.state.selectedColor])),
+                        React.createElement("div", { className: "palette-colors" }, this.state.selectedPalette.colors
+                            .map(function (color, i) { return _this.renderColor(color, i); }))));
                 };
                 /**
                  * Renders a single color.
@@ -52,7 +63,8 @@ var SpriteMakr;
                  */
                 PalettesEditor.prototype.renderColor = function (color, i) {
                     var _this = this;
-                    return (React.createElement("span", {"className": "color-wrapper", "key": i}, React.createElement(Palettes.Color, {"red": color[0], "green": color[1], "blue": color[2], "alpha": color[3], "onClick": function () { return _this.setState({ selectedColor: i }); }, "selected": this.state.selectedColor === i})));
+                    return (React.createElement("span", { className: "color-wrapper", key: i },
+                        React.createElement(Palettes.Color, { red: color[0], green: color[1], blue: color[2], alpha: color[3], onClick: function () { return _this.setState({ selectedColor: i }); }, selected: this.state.selectedColor === i })));
                 };
                 /**
                  * Renders the RGBA controls for a color.
@@ -65,7 +77,29 @@ var SpriteMakr;
                     if (!hasColor) {
                         color = [0, 0, 0, 0];
                     }
-                    return (React.createElement("div", {"className": "palette-color-options"}, this.renderColorName(), React.createElement("table", {"className": "palette-color-values-table"}, React.createElement("tbody", null, React.createElement("tr", {"className": "palette-color-labels"}, React.createElement("td", null, React.createElement("label", null, "Red")), React.createElement("td", null, React.createElement("label", null, "Green")), React.createElement("td", null, React.createElement("label", null, "Blue")), React.createElement("td", null, React.createElement("label", null, "Alpha"))), React.createElement("tr", {"className": "palette-color-values"}, React.createElement("td", null, React.createElement(Components.Inputs.NumberInput, {"defaultValue": color[0] || 0, "min": 0, "max": 255, "onChange": this.handleColorChange.bind(this, 0)})), React.createElement("td", null, React.createElement(Components.Inputs.NumberInput, {"defaultValue": color[1] || 0, "min": 0, "max": 255, "onChange": this.handleColorChange.bind(this, 1)})), React.createElement("td", null, React.createElement(Components.Inputs.NumberInput, {"defaultValue": color[2] || 0, "min": 0, "max": 255, "onChange": this.handleColorChange.bind(this, 2)})), React.createElement("td", null, React.createElement(Components.Inputs.NumberInput, {"defaultValue": color[3] || 0, "min": 0, "max": 255, "onChange": this.handleColorChange.bind(this, 3)}))))), React.createElement("div", {"className": "palette-color-buttons"}, this.renderColorControlButtons(hasColor && color))));
+                    return (React.createElement("div", { className: "palette-color-options" },
+                        this.renderColorName(),
+                        React.createElement("table", { className: "palette-color-values-table" },
+                            React.createElement("tbody", null,
+                                React.createElement("tr", { className: "palette-color-labels" },
+                                    React.createElement("td", null,
+                                        React.createElement("label", null, "Red")),
+                                    React.createElement("td", null,
+                                        React.createElement("label", null, "Green")),
+                                    React.createElement("td", null,
+                                        React.createElement("label", null, "Blue")),
+                                    React.createElement("td", null,
+                                        React.createElement("label", null, "Alpha"))),
+                                React.createElement("tr", { className: "palette-color-values" },
+                                    React.createElement("td", null,
+                                        React.createElement(Components.Inputs.NumberInput, { defaultValue: color[0] || 0, min: 0, max: 255, onChange: this.handleColorChange.bind(this, 0) })),
+                                    React.createElement("td", null,
+                                        React.createElement(Components.Inputs.NumberInput, { defaultValue: color[1] || 0, min: 0, max: 255, onChange: this.handleColorChange.bind(this, 1) })),
+                                    React.createElement("td", null,
+                                        React.createElement(Components.Inputs.NumberInput, { defaultValue: color[2] || 0, min: 0, max: 255, onChange: this.handleColorChange.bind(this, 2) })),
+                                    React.createElement("td", null,
+                                        React.createElement(Components.Inputs.NumberInput, { defaultValue: color[3] || 0, min: 0, max: 255, onChange: this.handleColorChange.bind(this, 3) }))))),
+                        React.createElement("div", { className: "palette-color-buttons" }, this.renderColorControlButtons(hasColor && color))));
                 };
                 /**
                  * Renders a name for the selected color, or a no-color-selected message.
@@ -74,9 +108,9 @@ var SpriteMakr;
                  */
                 PalettesEditor.prototype.renderColorName = function () {
                     if (typeof this.state.selectedColor === "undefined") {
-                        return React.createElement("h4", {"className": "palette-color-no-name"}, "No color selected");
+                        return React.createElement("h4", { className: "palette-color-no-name" }, "No color selected");
                     }
-                    return React.createElement("h4", {"className": "palette-color-name"}, "#" + this.state.selectedColor);
+                    return React.createElement("h4", { className: "palette-color-name" }, "#" + this.state.selectedColor);
                 };
                 /**
                  * Renders the action buttons below color controls.
@@ -87,10 +121,13 @@ var SpriteMakr;
                 PalettesEditor.prototype.renderColorControlButtons = function (color) {
                     var _this = this;
                     if (color) {
-                        return (React.createElement("div", {"className": "palette-color-buttons"}, React.createElement(Components.Inputs.Button, {"onActivate": function () { return _this.addNewColor(color.slice()); }, "text": "Clone"}), React.createElement(Components.Inputs.Button, {"onActivate": function () { return _this.deleteSelectedColor(color); }, "text": "Delete"}), ","));
+                        return (React.createElement("div", { className: "palette-color-buttons" },
+                            React.createElement(Components.Inputs.Button, { onActivate: function () { return _this.addNewColor(color.slice()); }, text: "Clone" }),
+                            React.createElement(Components.Inputs.Button, { onActivate: function () { return _this.deleteSelectedColor(color); }, text: "Delete" }),
+                            ","));
                     }
                     else {
-                        return (React.createElement(Components.Inputs.Button, {"onActivate": function () { return _this.addNewColor([0, 0, 0, 0]); }, "text": "Add New"}));
+                        return (React.createElement(Components.Inputs.Button, { onActivate: function () { return _this.addNewColor([0, 0, 0, 0]); }, text: "Add New" }));
                     }
                 };
                 /**
@@ -207,9 +244,8 @@ var SpriteMakr;
                     this.setSelectedPalette(paletteName);
                 };
                 return PalettesEditor;
-            })(React.Component);
+            }(React.Component));
             Palettes.PalettesEditor = PalettesEditor;
         })(Palettes = Components.Palettes || (Components.Palettes = {}));
     })(Components = SpriteMakr.Components || (SpriteMakr.Components = {}));
 })(SpriteMakr || (SpriteMakr = {}));
-//# sourceMappingURL=PalettesEditor.js.map

@@ -6,6 +6,7 @@ var RequireAll;
     /**
      * Loading status for a requirement.
      */
+    var Status;
     (function (Status) {
         /**
          * The requirement has not yet started to load.
@@ -23,13 +24,12 @@ var RequireAll;
          * The requirement successfully loaded.
          */
         Status[Status["Loaded"] = 3] = "Loaded";
-    })(RequireAll.Status || (RequireAll.Status = {}));
-    var Status = RequireAll.Status;
+    })(Status = RequireAll.Status || (RequireAll.Status = {}));
     /* Storage */
     /**
      * Summary of requirement information and load status for a file.
      */
-    var Requirement = (function () {
+    var Requirement = /** @class */ (function () {
         /**
          * Initializes a new instance of the Requirement class.
          *
@@ -46,7 +46,7 @@ var RequireAll;
             this.status = Status.NotStarted;
         }
         return Requirement;
-    })();
+    }());
     RequireAll.Requirement = Requirement;
     /* Loading */
     /**
@@ -63,7 +63,7 @@ var RequireAll;
         var _this = this;
         var requirements = [];
         for (var _i = 0; _i < arguments.length; _i++) {
-            requirements[_i - 0] = arguments[_i];
+            requirements[_i] = arguments[_i];
         }
         return requirements.map(function (requirement) { return _this.markRequirement(requirement); });
     }
@@ -220,4 +220,3 @@ var RequireAll;
         });
     }
 })(RequireAll || (RequireAll = {}));
-//# sourceMappingURL=RequireAll.js.map

@@ -1,11 +1,16 @@
 /// <reference path="../../References/react.d.ts" />
 /// <reference path="../../References/react-dom.d.ts" />
 /// <reference path="../../References/react-global.d.ts" />
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 /// <reference path="ExpandableButton.d.ts" />
 /// <reference path="Button.tsx" />
 var SpriteMakr;
@@ -18,10 +23,10 @@ var SpriteMakr;
             /**
              * A simple button with click and text behavior.
              */
-            var ExpandableButton = (function (_super) {
+            var ExpandableButton = /** @class */ (function (_super) {
                 __extends(ExpandableButton, _super);
                 function ExpandableButton() {
-                    _super.apply(this, arguments);
+                    return _super !== null && _super.apply(this, arguments) || this;
                 }
                 /**
                  * Renders the component.
@@ -34,7 +39,9 @@ var SpriteMakr;
                         style.width = this.props.size.width + "px";
                         style.height = this.props.size.height + "px";
                     }
-                    return (React.createElement("div", {"className": "button expandable-button button-has-icon no-border", "onClick": this.props.onActivate, "style": style}, React.createElement("span", {"className": "expandable-button-inside"}, React.createElement(Inputs.Button, {"icon": this.props.icon}))));
+                    return (React.createElement("div", { className: "button expandable-button button-has-icon no-border", onClick: this.props.onActivate, style: style },
+                        React.createElement("span", { className: "expandable-button-inside" },
+                            React.createElement(Inputs.Button, { icon: this.props.icon }))));
                 };
                 /**
                  * Gets a className for the input's container.
@@ -45,7 +52,7 @@ var SpriteMakr;
                     return "expandable-button";
                 };
                 return ExpandableButton;
-            })(Inputs.Input);
+            }(Inputs.Input));
             Inputs.ExpandableButton = ExpandableButton;
         })(Inputs = Components.Inputs || (Components.Inputs = {}));
     })(Components = SpriteMakr.Components || (SpriteMakr.Components = {}));

@@ -7,7 +7,7 @@ var PixelRendr;
      * Container for a "multiple" sprite, which is a sprite that contains separate
      * Uint8ClampedArray pieces of data for different sections (such as top, middle, etc.)
      */
-    var SpriteMultiple = (function () {
+    var SpriteMultiple = /** @class */ (function () {
         /**
          * Initializes a new instance of the SpriteMultiple class.
          *
@@ -29,10 +29,9 @@ var PixelRendr;
             this.middleStretch = sources.middleStretch || false;
         }
         return SpriteMultiple;
-    })();
+    }());
     PixelRendr.SpriteMultiple = SpriteMultiple;
 })(PixelRendr || (PixelRendr = {}));
-var PixelRendr;
 (function (PixelRendr) {
     "use strict";
     /**
@@ -40,7 +39,7 @@ var PixelRendr;
      * is stored, along with any generated outputs, information on its container,
      * and any filter.
      */
-    var Render = (function () {
+    var Render = /** @class */ (function () {
         /**
          * Initializes a new instance of the Render clsas.
          *
@@ -55,10 +54,9 @@ var PixelRendr;
             this.containers = [];
         }
         return Render;
-    })();
+    }());
     PixelRendr.Render = Render;
 })(PixelRendr || (PixelRendr = {}));
-var PixelRendr;
 (function (PixelRendr_1) {
     "use strict";
     /**
@@ -67,7 +65,7 @@ var PixelRendr;
      * are performed and cached quickly enough for use in real-time environments,
      * such as real-time video games.
      */
-    var PixelRendr = (function () {
+    var PixelRendr = /** @class */ (function () {
         /**
          * Initializes a new instance of the PixelRendr class.
          *
@@ -1091,7 +1089,6 @@ var PixelRendr;
             return object;
         };
         return PixelRendr;
-    })();
+    }());
     PixelRendr_1.PixelRendr = PixelRendr;
 })(PixelRendr || (PixelRendr = {}));
-//# sourceMappingURL=PixelRendr-0.2.0.js.map

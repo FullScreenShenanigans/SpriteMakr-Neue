@@ -1,11 +1,16 @@
 /// <reference path="UploadsSection.d.ts" />
 /// <reference path="../Inputs/FileDrop.tsx" />
 /// <reference path="../../References/PixelRendr-0.2.0.ts" />
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 var SpriteMakr;
 (function (SpriteMakr) {
     var Components;
@@ -16,7 +21,7 @@ var SpriteMakr;
             /**
              * An UploadsSection component.
              */
-            var UploadsSection = (function (_super) {
+            var UploadsSection = /** @class */ (function (_super) {
                 __extends(UploadsSection, _super);
                 /**
                  * Initializes a new instance of the UploadsSection class.
@@ -25,16 +30,17 @@ var SpriteMakr;
                  * @param context   The component's creation context.
                  */
                 function UploadsSection(props, context) {
-                    _super.call(this, props, context);
+                    var _this = _super.call(this, props, context) || this;
                     /**
                      * Renders that haven't yet been rendered.
                      */
-                    this.renderQueue = [];
+                    _this.renderQueue = [];
                     /**
                      * The next spot in the render queue to be rendered.
                      */
-                    this.renderQueuePosition = 0;
-                    this.generateNewPixelRender(props);
+                    _this.renderQueuePosition = 0;
+                    _this.generateNewPixelRender(props);
+                    return _this;
                 }
                 /**
                  * Gets the unique id of the section.
@@ -58,7 +64,10 @@ var SpriteMakr;
                  * @returns The rendered content components.
                  */
                 UploadsSection.prototype.renderContents = function () {
-                    return (React.createElement("div", {"className": "uploads-container"}, React.createElement(Components.Inputs.FileDrop, {"onFileUpload": this.queueImageUpload.bind(this), "text": "Upload raw images"}), React.createElement(Components.Inputs.FileDrop, {"onFileUpload": console.log.bind(console), "text": "Upload objects.js"}), React.createElement(Components.Inputs.FileDrop, {"onFileUpload": console.log.bind(console), "text": "Upload sprites.js"})));
+                    return (React.createElement("div", { className: "uploads-container" },
+                        React.createElement(Components.Inputs.FileDrop, { onFileUpload: this.queueImageUpload.bind(this), text: "Upload raw images" }),
+                        React.createElement(Components.Inputs.FileDrop, { onFileUpload: console.log.bind(console), text: "Upload objects.js" }),
+                        React.createElement(Components.Inputs.FileDrop, { onFileUpload: console.log.bind(console), text: "Upload sprites.js" })));
                 };
                 /**
                  * Reacts to an image completing upload by adding its information to the
@@ -156,9 +165,8 @@ var SpriteMakr;
                     return output;
                 };
                 return UploadsSection;
-            })(Sections.Section);
+            }(Sections.Section));
             Sections.UploadsSection = UploadsSection;
         })(Sections = Components.Sections || (Components.Sections = {}));
     })(Components = SpriteMakr.Components || (SpriteMakr.Components = {}));
 })(SpriteMakr || (SpriteMakr = {}));
-//# sourceMappingURL=UploadsSection.js.map

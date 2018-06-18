@@ -172,4 +172,3 @@ var SpriteMakr;
         path: "References/StringFilr-0.2.1"
     });
 })(SpriteMakr || (SpriteMakr = {}));
-//# sourceMappingURL=index.js.map

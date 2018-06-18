@@ -1,9 +1,14 @@
 /// <reference path="../../References/PixelRendr-0.2.0.ts" />
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 /// <reference path="Preview.d.ts" />
 var SpriteMakr;
 (function (SpriteMakr) {
@@ -15,6 +20,7 @@ var SpriteMakr;
             /**
              * Known rendering statuses for a preview's canvas.
              */
+            var Status;
             (function (Status) {
                 /**
                  * No real sprite data has been provided.
@@ -28,12 +34,11 @@ var SpriteMakr;
                  * The provided sprite data is invalid.
                  */
                 Status[Status["Failure"] = 2] = "Failure";
-            })(Results.Status || (Results.Status = {}));
-            var Status = Results.Status;
+            })(Status = Results.Status || (Results.Status = {}));
             /**
              * Base class for Result components.
              */
-            var Preview = (function (_super) {
+            var Preview = /** @class */ (function (_super) {
                 __extends(Preview, _super);
                 /**
                  * Initializes a new instance of the Preview class.
@@ -42,15 +47,15 @@ var SpriteMakr;
                  * @param context   The component's creation context.
                  */
                 function Preview(props, context) {
-                    var _this = this;
-                    _super.call(this, props, context);
-                    this.generateNewPixelRender(props);
-                    this.state = {
+                    var _this = _super.call(this, props, context) || this;
+                    _this.generateNewPixelRender(props);
+                    _this.state = {
                         status: Status.Blank
                     };
                     if (props && props.imageConverted) {
                         setTimeout(function () { return _this.componentWillReceiveProps(props); });
                     }
+                    return _this;
                 }
                 /**
                  * Determines whether a new props should cause a re-render.
@@ -99,7 +104,9 @@ var SpriteMakr;
                  */
                 Preview.prototype.render = function () {
                     var className = "preview preview-" + Status[this.state.status];
-                    return (React.createElement("div", {"className": className}, React.createElement("div", {"className": "preview-holder"}, React.createElement("canvas", {"className": "preview-canvas", "height": this.props.height * this.PixelRender.getScale(), "ref": Preview.keyRefCanvas, "width": this.props.width * this.PixelRender.getScale()}))));
+                    return (React.createElement("div", { className: className },
+                        React.createElement("div", { className: "preview-holder" },
+                            React.createElement("canvas", { className: "preview-canvas", height: this.props.height * this.PixelRender.getScale(), ref: Preview.keyRefCanvas, width: this.props.width * this.PixelRender.getScale() }))));
                 };
                 /**
                  * Updates the canvas with new image data.
@@ -113,8 +120,7 @@ var SpriteMakr;
                     var imageConverted = props.imageConverted, key = this.generateSpriteKey(imageConverted), canvas = this.refs[Preview.keyRefCanvas], context = canvas.getContext("2d"), imageData, sprite;
                     this.PixelRender.resetLibrary((_a = {},
                         _a[key] = imageConverted,
-                        _a
-                    ));
+                        _a));
                     sprite = this.PixelRender.decode(key, {
                         spriteHeight: props.height * this.PixelRender.getScale(),
                         spriteWidth: props.width * this.PixelRender.getScale()
@@ -161,9 +167,8 @@ var SpriteMakr;
                  */
                 Preview.keyRefCanvas = "canvas";
                 return Preview;
-            })(React.Component);
+            }(React.Component));
             Results.Preview = Preview;
         })(Results = Components.Results || (Components.Results = {}));
     })(Components = SpriteMakr.Components || (SpriteMakr.Components = {}));
 })(SpriteMakr || (SpriteMakr = {}));
-//# sourceMappingURL=Preview.js.map
